@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="VentasTotales" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6dff7840-adc5-4444-ae44-52d6a1384ab1">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+	<parameter name="DirImagenes" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT "PRODUCT"."NAME",
+	SUM( "POSITIONS"."QUANTITY") AS TOTAL
+FROM "PRODUCT"
+	INNER JOIN "POSITIONS" ON 
+	 "POSITIONS"."PRODUCTID" = "PRODUCT"."ID" 
+GROUP BY "PRODUCT"."NAME"
+ORDER BY  "PRODUCT"."NAME" ASC]]>
+	</queryString>
+	<field name="NAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="NAME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCT"/>
+	</field>
+	<field name="TOTAL" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="TOTAL"/>
+		<property name="com.jaspersoft.studio.field.label" value="TOTAL"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="64" splitType="Stretch">
+			<staticText>
+				<reportElement x="180" y="14" width="195" height="50" uuid="b5dcfd94-3486-4d76-a1b0-b3b2b7a367c0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Sylfaen" size="32" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ventas Totales]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="50" splitType="Stretch">
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="455" y="0" width="100" height="30" uuid="bd449974-5ba3-4167-afd4-265e0733a2b7"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="0" y="0" width="50" height="50" uuid="f7f6fd1b-cb82-4489-b95e-3f71ba4ff421"/>
+				<imageExpression><![CDATA[$P{DirImagenes}+"ropa.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement x="120" y="-1" width="100" height="30" uuid="c8dc6733-43de-4391-b1e5-b8e5ac0558eb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="77d85196-f54c-456b-a072-f1c5d0f6d3b5"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Sylfaen" size="16" isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[PRODUCTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="-1" width="100" height="30" uuid="ab4cbb19-ba07-4130-a38c-95f0b6fae421">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fea2dee6-a53c-4ecb-9f2c-8ed7757a3e5f"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Sylfaen" size="16" isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL VENDIDOS]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="120" y="-1" width="100" height="30" uuid="83795f88-fb6c-4607-b9fc-6977f30d92c5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="77d85196-f54c-456b-a072-f1c5d0f6d3b5"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Sylfaen" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="-1" width="100" height="30" uuid="e0059996-6243-42f4-a937-b6eddc081080">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fea2dee6-a53c-4ecb-9f2c-8ed7757a3e5f"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Sylfaen" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTAL}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="260" splitType="Stretch">
+			<barChart>
+				<chart evaluationTime="Report">
+					<reportElement x="57" y="40" width="440" height="220" uuid="199b68f4-8d4a-4961-87ce-5035f23126ed"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{NAME}]]></seriesExpression>
+						<categoryExpression><![CDATA[0]]></categoryExpression>
+						<valueExpression><![CDATA[$F{TOTAL}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+		</band>
+	</summary>
+</jasperReport>
