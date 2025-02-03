@@ -174,39 +174,25 @@ ORDER BY "ADDRESS"."FIRSTNAME" ASC,
 	<columnHeader>
 		<band height="30" splitType="Stretch">
 			<textField>
-				<reportElement x="200" y="0" width="70" height="30" uuid="e535b8da-e3f8-4cac-ade2-2c1b6e6dd598"/>
+				<reportElement x="120" y="0" width="70" height="30" uuid="e535b8da-e3f8-4cac-ade2-2c1b6e6dd598"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="14" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{FIRSTNAME}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="270" y="0" width="100" height="30" uuid="8e965eff-c970-4069-93c6-6696016a62eb"/>
+				<reportElement x="190" y="0" width="100" height="30" uuid="8e965eff-c970-4069-93c6-6696016a62eb"/>
 				<textElement verticalAlignment="Middle">
 					<font size="14" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{LASTNAME}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="120" y="0" width="80" height="30" uuid="f21afd2a-04eb-409f-8156-3fd05caceb92"/>
+				<reportElement x="40" y="0" width="80" height="30" uuid="f21afd2a-04eb-409f-8156-3fd05caceb92"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="16" isBold="true" isItalic="false" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[CLIENTE: ]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="70" y="0" width="40" height="30" uuid="2b283665-9986-4e57-b58f-388defd14b60"/>
-				<textElement>
-					<font size="14" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{ID}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="40" y="0" width="29" height="30" uuid="1713f489-ea1c-45a9-aa9c-a14a3faebf37"/>
-				<textElement>
-					<font size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Nº ]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
